@@ -70,3 +70,88 @@ function logActivity(p = defaultPerson) {
 }
 
 logActivity();
+
+
+var lordifyOne = function (firstname) {
+  return `${firstname} of Canterbury`;
+};
+
+console.log(lordifyOne("Dale"));
+console.log(lordifyOne("Daryle"));
+
+
+// стрелочная функция => указывает на то что должно быть вызвано
+
+var lordify = firstname => `${firstname} of Next Canterbury`;
+console.log(lordify("Dante"));
+
+// старый синтаксис
+var lordifyTwo = function (firstName, land) {
+  return `${firstName} of ${land}`;
+};
+
+console.log(lordifyTwo("Tiabaldo", 'Spain'));
+
+// новый синтаксис
+var lordyfyThree = (firstName, land) => `${firstName} of ${land}`;
+console.log(lordyfyThree("Dale", "Maryland"));
+console.log(lordyfyThree("Daryle", "Culpeper"));
+
+// если тело функции состоит боллее чем из одной строки, то ее следует
+// заключать в фигурные скобки
+
+// старый синтаксис
+var lordifyFour = function (firstName, land) {
+
+  if (!firstName) {
+    throw new Error('A fistName is required to lordifyFour');
+  }
+
+  if (!land) {
+    throw new Error('A lord must have a land');
+  }
+
+  return console.log(`${firstName} of ${land}`);
+
+};
+
+lordifyFour("Bob", "web");
+
+// новый синтаксис
+var lordifyFive = (firstName, land) => {
+  if (!firstName) {
+    throw new Error('A fistName is required to lordifyFive');
+  }
+
+  if (!land) {
+    throw new Error('A lord must have a land');
+  }
+
+  return console.log(`${firstName} of ${land}`);
+};
+
+lordifyFour("Taran", "web");
+
+// старый
+var tahoe = {
+  resorts: ["Kirkwood", "Squaw", "Alpine", "Heavenly", "Northstar"],
+  print: function (delay=1000) {
+    setTimeout(function () {
+      console.log(this.resorts.join(","));
+    }, delay)
+  }
+};
+
+//tahoe.print();
+
+var tahoeTwo = {
+  resorts: ["Kirkwood", "Squaw", "Alpine", "Heavenly", "Northstar"],
+  print: function (delay=3000) {
+    setTimeout(() =>
+      console.log(this.resorts.join(","))
+    , delay)
+  }
+};
+
+tahoeTwo.print();
+
