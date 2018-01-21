@@ -155,3 +155,36 @@ var tahoeTwo = {
 
 tahoeTwo.print();
 
+var sandwich = {
+  bread: "dutch crunch",
+  meat: "tuna",
+  cheese: "swiss",
+  toppings: ["lettuce", "tomato", "mustard"]
+};
+// область видимости для локального применения
+var {bread, meat} = sandwich;
+
+console.log(bread, meat);
+
+var lordifySix = regularPersonTwo => {
+  console.log(`${regularPersonTwo.firstName} of Conterbury`);
+};
+
+var regularPersonTwo = {
+  firstName: "Bill",
+  lastName: "Wilson"
+};
+
+lordifySix(regularPersonTwo);
+
+var name = "Tallac";
+var elavation = 9738;
+var print = function() {
+  console.log(`Mr. ${this.name} is ${this.elavation} feat tall`);
+};
+
+// создаем из переменных объект
+var funHike = {name, elavation, print};
+
+funHike.print();
+
