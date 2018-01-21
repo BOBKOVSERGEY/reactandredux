@@ -219,5 +219,63 @@ const skierOne = {
 };
 */
 
+// Оператор распространения
+var peaks = ["Tallac", "Ralston", "Rose"];
+var canyons = ["Ward", "Blackwood"];
+
+// объединяем содержимое массивов
+var tahoe = [...peaks, ...canyons];
+
+console.log(tahoe);
+console.log(tahoe.join(', '));
+
+var peaksOne = ["Tallac", "Ralston", "Rose"];
+
+var [last] = peaksOne.reverse();
+
+console.log(last);
+// вывод массива в обратном порядке
+console.log(peaksOne.join(', '));
+
+var lakes = ["Donner", "Marlette", "Fallen Leaf", "Cascade"];
+
+var [first, ...rest] = lakes;
+
+console.log(rest.join(', '));
+
+function directions(...args) {
+  var [start, ...remaining] = args;
+  var [finish, ...stops] = remaining.reverse();
+
+  console.log(`drive through ${args.length} towns`);
+  console.log(`start in ${start}`);
+  console.log(`the destination is ${finish}`);
+  console.log(`shopping ${stops.length}`);
+};
+
+directions(
+  "Truckee",
+  "Tahoe City",
+  "Sunnyside",
+  "Homewood",
+  "Tahoma"
+);
+
+// объединение объектов
+var morning = {
+  breakfast: "oatmeal",
+  lunch: "peanut butter and jelly"
+};
+
+var dinner = "mac and cheese";
+
+var backpackingMeals = {
+  ...morning,
+  dinner
+};
+
+console.log(backpackingMeals);
+
+
 
 
