@@ -188,3 +188,36 @@ var funHike = {name, elavation, print};
 
 funHike.print();
 
+/** Сравнение старого и нового синтаксиса: синтаксис обекта**/
+
+// старый синтаксис
+var skier = {
+  name: name,
+  sound: "sound",
+  powderYell: function () {
+    var yell = this.sound.toUpperCase();
+    console.log(`${yell} ${yell} ${yell}!!!`);
+  },
+  speed: function(mph) {
+    this.speed = mph;
+    console.log('speed:', mph);
+  }
+};
+
+/* новый синтаксис
+const skierOne = {
+  name,
+  sound,
+  powderYell() {
+    let yell = this.sound.toUpperCase();
+    console.log(`${yell} ${yell} ${yell}!!!`);
+  },
+  speed(mph) {
+    this.speed = mph;
+    console.log('speed:', mph);
+  }
+};
+*/
+
+
+
