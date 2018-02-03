@@ -1,8 +1,8 @@
 var bs = require("browser-sync").create();
 
-bs.watch(['classes/*.*', 'classes/css/*.*']).on("change", bs.reload);
+bs.watch(['imperativnost-declarativnost/*.*', 'imperativnost-declarativnost/css/*.*']).on("change", bs.reload);
 
 // Start a Browsersync proxy
 bs.init({
-  server: "./classes"
+  server: "./imperativnost-declarativnost"
 });
