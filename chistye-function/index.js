@@ -186,6 +186,81 @@ const showUnauthorized = () =>
 invokeIf(true, showWelcome, showUnauthorized);
 invokeIf(false, showWelcome, showUnauthorized);
 
+const getFakeMembers = count => new Promise((resolves, rejects) => {
+  const api = `https://api.randomuser.me/?nat=US&results=${count}`;
+  const request = new XMLHttpRequest();
+  request.open('GET', api);
+  request.onload = () =>
+    (request.status === 200) ?
+      resolves(JSON.parse(request.response).results) :
+      reject(Error(request.statusText));
+  request.onerror = (err) => rejects(err);
+  request.send();
+
+});
+
+const userLogs = userName => message =>
+      console.log(`${userName} -> ${message}`);
+
+const log = userLogs('granda 23');
+
+log("попытка загрузки 20 мнимых сотрудников");
+  getFakeMembers(20).then(
+    members => log(`Успешно загружено ${members.length} сотрудников`),
+    error => log("попытка загрузки 20 мнимых сотрудников")
+  )
+
+const countDown = (value, fn) => {
+    fn(value)
+  return (value > 0) ? countDown(value -1, fn) : value
+}
+countDown(10, value => console.log(value));
+
+
+const coundDownTwo = (value, fn, delay=3000) => {
+  fn(value)
+  return (value > 0) ?
+    setTimeout(()=>coundDownTwo(value -1, fn), delay) :
+    value
+}
+
+const logTwo = value => console.log(value);
+
+coundDownTwo(10, log);
+
+var dan = {
+  type: 'person',
+  data: {
+    gender: 'male',
+    info: {
+      id: 22,
+      fullname: {
+        first: 'Dan',
+        last: 'Deacon'
+      }
+    }
+  }
+}
+
+//deepPick("type", dan);
+
+const deepPick = (fields, object={}) => {
+  const [first, ... remaining] = fields.split('.')
+  return (remaining.length) ?
+    deepPick(remaining.join('.'), object[first]) :
+    object[first]
+};
+
+const template = "hh:mm:ss tt";
+const clockTime = template.replace('hh', '03')
+  .replace('mm', '33')
+  .replace('ss', '33')
+  .replace('tt', 'PM');
+console.log(clockTime);
+
+
+
+
 
 
 
